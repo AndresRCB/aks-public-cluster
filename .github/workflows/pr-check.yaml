@@ -10,7 +10,7 @@ on:
       - '**.md'
       - '**/go.mod'
 env:
-      SKIP_CHECKOV: true
+  SKIP_CHECKOV: true
 
 jobs:
   prepr-check:
