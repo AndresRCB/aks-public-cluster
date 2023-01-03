@@ -1,6 +1,30 @@
 # aks-public-cluster
 Simple public AKS cluster with automatic authorized IP address configuration for demos.
 
+## Running pre-commit checks
+Run the following command with docker installed and running:
+```sh
+docker run --rm -v $(pwd):/src -w /src mcr.microsoft.com/azterraform:latest make pre-commit
+```
+
+## Running pr checks
+Run the following command with docker installed and running:
+```sh
+docker run --rm -v $(pwd):/src -w /src mcr.microsoft.com/azterraform:latest make pr-check
+```
+
+## Running end-to-end (e2e) tests
+First, get a [service principal in your Azure subscription to run Terraform](https://learn.microsoft.com/en-us/azure/developer/terraform/authenticate-to-azure?tabs=bash#create-a-service-principal); then, set the environment variables used in the command below with that service principal and run the following command:
+```sh
+docker run --rm -v $(pwd):/src -w /src -e ARM_SUBSCRIPTION_ID -e ARM_TENANT_ID -e ARM_CLIENT_ID -e ARM_CLIENT_SECRET mcr.microsoft.com/azterraform:latest make e2e-test
+```
+
+## Running unit tests
+Run the following command:
+```sh
+docker run --rm -v $(pwd):/src -w /src mcr.microsoft.com/azterraform:latest make unit-test
+```
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
