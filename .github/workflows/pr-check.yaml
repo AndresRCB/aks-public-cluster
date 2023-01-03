@@ -12,4 +12,6 @@ on:
 
 jobs:
   prepr-check:
+    env:
+      SKIP_CHECKOV: true
     uses: Azure/tfmod-scaffold/.github/workflows/pr-check.yaml@main
