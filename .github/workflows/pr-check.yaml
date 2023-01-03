@@ -9,9 +9,9 @@ on:
       - '.github/workflows/**'
       - '**.md'
       - '**/go.mod'
+env:
+      SKIP_CHECKOV: true
 
 jobs:
   prepr-check:
-    env:
-      SKIP_CHECKOV: true
     uses: Azure/tfmod-scaffold/.github/workflows/pr-check.yaml@main
