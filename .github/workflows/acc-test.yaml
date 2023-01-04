@@ -12,9 +12,14 @@ on:
 
 jobs:
   acc-tests:
-    runs-on: [self-hosted, 1ES.Pool=<YOUR_REPO_NAME>]
+    runs-on: ubuntu-latest
     environment:
       name: acctests
+    env:
+      ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
     steps:
       - uses: actions/checkout@v3
       - name: init
@@ -22,7 +27,7 @@ jobs:
           docker run --rm -v $(pwd):/src -w /src mcr.microsoft.com/azterraform:latest make generate
       - name: e2e test
         run: |
-          sh scripts/ci-e2e.sh
+          sh custom_scripts/ci-e2e.sh
       - name: version-upgrade test
         run: |
-          sh scripts/ci-version-upgrade.sh
+          sh custom_scripts/ci-version-upgrade.sh

@@ -12,4 +12,4 @@ on:
 
 jobs:
   prepr-check:
-    uses: Azure/tfmod-scaffold/.github/workflows/pr-check.yaml@main
+    uses: AndresRCB/tfmod-scaffold/.github/workflows/pr-check.yaml@nonprod
