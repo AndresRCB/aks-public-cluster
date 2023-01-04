@@ -44,7 +44,7 @@ docker run --rm -v $(pwd):/src -w /src -e ARM_SUBSCRIPTION_ID -e ARM_TENANT_ID -
   az storage container create -n $STORAGE_CONTAINER_NAME --account-name $STORAGE_ACCOUNT_NAME
   ```
   
-3. Update the Terraform provider in the [examples/basic_e2e/providers.tf file](./examples/basic/providers.tf) and fill in your values in the backend.
+3. Update the Terraform provider in the [examples/basice2e/providers.tf file](./examples/basic/providers.tf) and fill in your values in the backend.
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements

@@ -6,13 +6,13 @@ terraform {
       version = "~> 3.24"
     }
   }
-  backend "azurerm" {
-    # Replace values here with your own
-    resource_group_name  = "andrescotfrg"
-    storage_account_name = "andrescotfacc"
-    container_name       = "andrescotfcontainer"
-    key                  = "akspubliccluster.tfstate"
-  }
+  # backend "azurerm" {
+  #   # Replace values here with your own
+  #   resource_group_name  = "andrescotfrg"
+  #   storage_account_name = "andrescotfacc"
+  #   container_name       = "andrescotfcontainer"
+  #   key                  = "akspubliccluster.tfstate"
+  # }
 }
 
 provider "azurerm" {
