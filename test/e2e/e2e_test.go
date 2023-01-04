@@ -13,7 +13,7 @@ func TestBasicApply(t *testing.T) {
 	vars := map[string]interface{}{
 		"resource_group_name": "e2e-test-rg-arcb",
 	}
-	test_helper.RunE2ETest(t, "../../", "examples/basic", terraform.Options{
+	test_helper.RunE2ETest(t, "../../", "examples/basic_e2e", terraform.Options{
 		Upgrade: true,
 		Vars:    vars,
 	}, func(t *testing.T, output test_helper.TerraformOutput) {

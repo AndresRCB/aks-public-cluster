@@ -10,13 +10,7 @@ docker run --rm -v $(pwd):/src -w /src mcr.microsoft.com/azterraform:latest make
 ## Running pr checks
 Run the following command with docker installed and running:
 ```sh
-docker run --rm -v $(pwd):/src -w /src mcr.microsoft.com/azterraform:latest make pr-check
-```
-
-## Running end-to-end (e2e) tests
-First, get a [service principal in your Azure subscription to run Terraform](https://learn.microsoft.com/en-us/azure/developer/terraform/authenticate-to-azure?tabs=bash#create-a-service-principal); then, set the environment variables used in the command below with that service principal and run the following command:
-```sh
-docker run --rm -v $(pwd):/src -w /src -e ARM_SUBSCRIPTION_ID -e ARM_TENANT_ID -e ARM_CLIENT_ID -e ARM_CLIENT_SECRET mcr.microsoft.com/azterraform:latest make e2e-test
+docker run --rm -v $(pwd):/src -w /src -e SKIP_CHECKOV=true mcr.microsoft.com/azterraform:latest make pr-check
 ```
 
 ## Running unit tests
@@ -24,6 +18,33 @@ Run the following command:
 ```sh
 docker run --rm -v $(pwd):/src -w /src mcr.microsoft.com/azterraform:latest make unit-test
 ```
+
+## Running end-to-end (e2e) tests
+
+### Locally running e2e tests
+First, get a [service principal in your Azure subscription to run Terraform](https://learn.microsoft.com/en-us/azure/developer/terraform/authenticate-to-azure?tabs=bash#create-a-service-principal); then, set the environment variables used in the command below with that service principal and run the following command:
+```sh
+docker run --rm -v $(pwd):/src -w /src -e ARM_SUBSCRIPTION_ID -e ARM_TENANT_ID -e ARM_CLIENT_ID -e ARM_CLIENT_SECRET mcr.microsoft.com/azterraform:latest make e2e-test
+```
+
+### Setting up GitHub Actions for e2e tests
+1. Using the service principal values from local tests (or from a different SP if you prefer), add secrets to your GitHub actions under the following names:
+  - ARM_SUBSCRIPTION_ID
+  - ARM_TENANT_ID
+  - ARM_CLIENT_ID
+  - ARM_CLIENT_SECRET
+2. Create a resource group, storage account and storage container using the following commands:
+  ```sh
+  # Replace names below with your own!
+  export RESOURCE_GROUP_NAME="andrescotfrg"
+  export STORAGE_ACCOUNT_NAME="andrescotfacc"
+  export STORAGE_CONTAINER_NAME="andrescotfcontainer"
+  az group create -n $RESOURCE_GROUP_NAME -l eastus
+  az storage account create -n $STORAGE_ACCOUNT_NAME -g $RESOURCE_GROUP_NAME -l eastus --sku Standard_LRS
+  az storage container create -n $STORAGE_CONTAINER_NAME --account-name $STORAGE_ACCOUNT_NAME
+  ```
+  
+3. Update the Terraform provider in the [examples/basic_e2e/providers.tf file](./examples/basic/providers.tf) and fill in your values in the backend.
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
