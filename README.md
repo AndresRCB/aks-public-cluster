@@ -1,4 +1,7 @@
 # aks-public-cluster
+
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/AndresRCB/aks-public-cluster/acc-test.yaml?label=E2E%20Tests)
+
 Simple public AKS cluster with automatic authorized IP address configuration for demos.
 
 ## Running pre-commit checks
