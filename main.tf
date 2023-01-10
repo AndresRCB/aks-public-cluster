@@ -20,26 +20,27 @@ resource "azurerm_subnet" "main" {
 }
 
 resource "azurerm_network_security_group" "main" {
-  name                = "nsg-${azurerm_subnet.main.name}"
   location            = data.azurerm_resource_group.main.location
+  name                = "nsg-${azurerm_subnet.main.name}"
   resource_group_name = data.azurerm_resource_group.main.name
+  tags                = var.tags
 
   security_rule {
+    access                     = "Allow"
+    direction                  = "Inbound"
     name                       = "AllowCidrBlockHTTPInbound"
     priority                   = 3000
-    direction                  = "Inbound"
-    access                     = "Allow"
     protocol                   = "Tcp"
-    source_port_range          = "*"
+    destination_address_prefix = "*"
     destination_port_range     = "*"
     source_address_prefix      = "${chomp(data.http.myip.response_body)}/32"
-    destination_address_prefix = "*"
+    source_port_range          = "*"
   }
 }
 
 resource "azurerm_subnet_network_security_group_association" "main" {
-  subnet_id                 = azurerm_subnet.main.id
   network_security_group_id = azurerm_network_security_group.main.id
+  subnet_id                 = azurerm_subnet.main.id
 }
 
 ## CLUSTER RESOURCES
