@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Allow inbound http in subnet from local IP [\#2](https://github.com/AndresRCB/aks-public-cluster/pull/2) ([AndresRCB](https://github.com/AndresRCB))
 - Update versions file [\#1](https://github.com/AndresRCB/aks-public-cluster/pull/1) ([AndresRCB](https://github.com/AndresRCB))
 
 
