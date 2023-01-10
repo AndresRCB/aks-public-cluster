@@ -51,6 +51,12 @@ variable "default_node_pool_vm_size" {
   default     = "Standard_D2s_v3"
 }
 
+# variable "subnet_allow_inbound_http" {
+#   type        = bool
+#   description = "Create a security rule for the subnet to allow HTTP inbound traffic from the current TF client's IP address if true"
+#   default     = true
+# }
+
 variable "subnet_cidr" {
   type        = string
   description = "CIDR range for the cluster subnet"

@@ -1,18 +1,18 @@
 # Required variables
-resource_group_name = "private-aks-rg"
-ssh_key_file = "~/.ssh/id_rsa"
+# resource_group_name = "public-aks-rg"
 
 ## VALUES BELOW ARE DEFAULT VALUES. UNCOMMENT AND CHANGE TO OVERRIDE
 
-# location = "eastus"
-# cluster_name = "aks-private-cluster"
-# vnet_name = "vnet-private-aks"
-# vnet_cidr = "172.16.0.0/16"
-# subnet_name = "subnet-private-aks"
+# cluster_dns_prefix = "akspubliccluster"
+# cluster_dns_service_ip_address = "172.16.16.254"
+# cluster_docker_bridge_address = "172.17.0.1/16"
+# cluster_identity = "identity-public-aks-cluster"
+# cluster_name = "aks-public-cluster"
+# cluster_service_ip_range = "172.16.16.0/24"
+# cluster_sku_tier = "Free"
+# default_node_pool_vm_size = "Standard_D2s_v3"
 # subnet_cidr = "172.16.0.0/20"
-# cluster_identity = "identity-private-aks-cluster"
-# jumpbox_name = "vm-jumpbox"
-# jumpbox_admin_name = "azureuser"
-# jumpbox_size = "Standard_D2s_v3"
-# bastion_public_ip_name = "bastion-ip-aks"
-# bastion_name = "bastion-private-aks"
+# subnet_name = "subnet-public-aks"
+# tags = {}
+# vnet_cidr = "172.16.0.0/16"
+# vnet_name = "vnet-public-aks"
