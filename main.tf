@@ -32,7 +32,7 @@ resource "azurerm_network_security_group" "main" {
     priority                   = 3000
     protocol                   = "Tcp"
     destination_address_prefix = "*"
-    destination_port_range     = "*"
+    destination_port_ranges    = ["80", "443"]
     source_address_prefix      = "${chomp(data.http.myip.response_body)}/32"
     source_port_range          = "*"
   }
