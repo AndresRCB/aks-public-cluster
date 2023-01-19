@@ -14,9 +14,9 @@ resource "azurerm_user_assigned_identity" "aks" {
 }
 
 resource "azurerm_role_assignment" "aks_network_contributor" {
+  principal_id         = azurerm_user_assigned_identity.aks.principal_id
   scope                = azurerm_virtual_network.main.id
   role_definition_name = "Network Contributor"
-  principal_id         = azurerm_user_assigned_identity.aks.principal_id
 }
 
 resource "azurerm_kubernetes_cluster" "main" {
@@ -26,10 +26,10 @@ resource "azurerm_kubernetes_cluster" "main" {
   # Allow the current client's public IP address only
   api_server_authorized_ip_ranges = ["${chomp(data.http.myip.response_body)}/32"]
   dns_prefix                      = var.cluster_dns_prefix
+  oidc_issuer_enabled             = true
   private_cluster_enabled         = false
   sku_tier                        = var.cluster_sku_tier
   tags                            = var.tags
-  oidc_issuer_enabled             = true
   workload_identity_enabled       = true
 
   default_node_pool {

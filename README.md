@@ -67,7 +67,6 @@ docker run --rm -v $(pwd):/src -w /src -e ARM_SUBSCRIPTION_ID -e ARM_TENANT_ID -
 | Name                                                                      | Version |
 |---------------------------------------------------------------------------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.3  |
-| <a name="requirement_azapi"></a> [azapi](#requirement\_azapi)             | ~> 1.2  |
 | <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm)       | ~> 3.24 |
 | <a name="requirement_http"></a> [http](#requirement\_http)                | ~> 3.2  |
 
