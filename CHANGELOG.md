@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased](https://github.com/AndresRCB/aks-public-cluster/tree/HEAD)
+
+**Merged pull requests:**
+
+- Added Workload Identity and contributor network access to cluster [\#4](https://github.com/AndresRCB/aks-public-cluster/pull/4) ([AndresRCB](https://github.com/AndresRCB))
+
 ## [v0.1.0](https://github.com/AndresRCB/aks-public-cluster/tree/v0.1.0) (2023-01-11)
 
 **Merged pull requests:**
