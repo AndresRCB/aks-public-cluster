@@ -75,7 +75,6 @@ docker run --rm -v $(pwd):/src -w /src -e ARM_SUBSCRIPTION_ID -e ARM_TENANT_ID -
 
 | Name                                                          | Version |
 |---------------------------------------------------------------|---------|
-| <a name="provider_azapi"></a> [azapi](#provider\_azapi)       | ~> 1.2  |
 | <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | ~> 3.24 |
 | <a name="provider_http"></a> [http](#provider\_http)          | ~> 3.2  |
 
@@ -87,7 +86,6 @@ No modules.
 
 | Name                                                                                                                                                                                | Type        |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|
-| [azapi_resource.flux_addon](https://registry.terraform.io/providers/azure/azapi/latest/docs/resources/resource)                                                                     | resource    |
 | [azurerm_kubernetes_cluster.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/kubernetes_cluster)                                               | resource    |
 | [azurerm_network_security_group.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_security_group)                                       | resource    |
 | [azurerm_role_assignment.aks_network_contributor](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/role_assignment)                                  | resource    |
