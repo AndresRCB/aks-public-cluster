@@ -1,5 +1,5 @@
 output "api_server_authorized_ip_ranges" {
-  value       = azurerm_kubernetes_cluster.main.api_server_authorized_ip_ranges
+  value       = "${chomp(data.http.myip.response_body)}/32"
   description = "CIDR range of IP addresses that can access the cluster's API server's public endpoint"
 }
 

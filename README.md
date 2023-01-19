@@ -4,6 +4,18 @@
 
 Simple public AKS cluster with automatic authorized IP address configuration for demos.
 
+## Important considerations and pre-requisites
+1. This cluster enables the public preview for workload identity, which involves enabling extensions and OIDC issuer endpoints.
+2. This cluster will install the flux addon even if it's not used or configured (it's just easier for demos)
+3. **IMPORTANT** In order to use this with any Azure subscription, you need to enable workload identity preview. Follow the steps [here](https://learn.microsoft.com/en-us/azure/aks/workload-identity-deploy-cluster#register-the-enableworkloadidentitypreview-feature-flag) to do that. The TL;DR is to run the following commands:
+```sh
+az feature register --namespace "Microsoft.ContainerService" --name "EnableWorkloadIdentityPreview"
+# Run the following command until you see that the feature is "Registered" (will take a few minutes)
+az feature show --namespace "Microsoft.ContainerService" --name "EnableWorkloadIdentityPreview"
+# Once the feature is registered, run this command to refresh the provider registration
+az provider register --namespace Microsoft.ContainerService
+```
+
 ## Running pre-commit checks
 Run the following command with docker installed and running:
 ```sh
@@ -75,6 +87,7 @@ No modules.
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|
 | [azurerm_kubernetes_cluster.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/kubernetes_cluster)                                               | resource    |
 | [azurerm_network_security_group.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_security_group)                                       | resource    |
+| [azurerm_role_assignment.aks_network_contributor](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/role_assignment)                                  | resource    |
 | [azurerm_subnet.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subnet)                                                                       | resource    |
 | [azurerm_subnet_network_security_group_association.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subnet_network_security_group_association) | resource    |
 | [azurerm_user_assigned_identity.aks](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/user_assigned_identity)                                        | resource    |

@@ -1,49 +1,10 @@
-# INFRASTRUCTURE STARTS HERE
-
 data "azurerm_resource_group" "main" {
   name = var.resource_group_name
 }
 
-resource "azurerm_virtual_network" "main" {
-  address_space       = [var.vnet_cidr]
-  location            = data.azurerm_resource_group.main.location
-  name                = var.vnet_name
-  resource_group_name = data.azurerm_resource_group.main.name
-  tags                = var.tags
+data "http" "myip" {
+  url = "https://ipv4.icanhazip.com"
 }
-
-resource "azurerm_subnet" "main" {
-  address_prefixes     = [var.subnet_cidr]
-  name                 = var.subnet_name
-  resource_group_name  = azurerm_virtual_network.main.resource_group_name
-  virtual_network_name = azurerm_virtual_network.main.name
-}
-
-resource "azurerm_network_security_group" "main" {
-  location            = data.azurerm_resource_group.main.location
-  name                = "nsg-${azurerm_subnet.main.name}"
-  resource_group_name = data.azurerm_resource_group.main.name
-  tags                = var.tags
-
-  security_rule {
-    access                     = "Allow"
-    direction                  = "Inbound"
-    name                       = "AllowCidrBlockHTTPInbound"
-    priority                   = 3000
-    protocol                   = "Tcp"
-    destination_address_prefix = "*"
-    destination_port_ranges    = ["80", "443"]
-    source_address_prefix      = "${chomp(data.http.myip.response_body)}/32"
-    source_port_range          = "*"
-  }
-}
-
-resource "azurerm_subnet_network_security_group_association" "main" {
-  network_security_group_id = azurerm_network_security_group.main.id
-  subnet_id                 = azurerm_subnet.main.id
-}
-
-## CLUSTER RESOURCES
 
 resource "azurerm_user_assigned_identity" "aks" {
   location            = data.azurerm_resource_group.main.location
@@ -52,20 +13,24 @@ resource "azurerm_user_assigned_identity" "aks" {
   tags                = var.tags
 }
 
-data "http" "myip" {
-  url = "https://ipv4.icanhazip.com"
+resource "azurerm_role_assignment" "aks_network_contributor" {
+  principal_id         = azurerm_user_assigned_identity.aks.principal_id
+  scope                = azurerm_virtual_network.main.id
+  role_definition_name = "Network Contributor"
 }
 
 resource "azurerm_kubernetes_cluster" "main" {
-  location                        = data.azurerm_resource_group.main.location
-  name                            = var.cluster_name
-  resource_group_name             = data.azurerm_resource_group.main.name
+  location            = data.azurerm_resource_group.main.location
+  name                = var.cluster_name
+  resource_group_name = data.azurerm_resource_group.main.name
+  # Allow the current client's public IP address only
   api_server_authorized_ip_ranges = ["${chomp(data.http.myip.response_body)}/32"]
   dns_prefix                      = var.cluster_dns_prefix
+  oidc_issuer_enabled             = true
   private_cluster_enabled         = false
-  # Allow the current client's public IP address only
-  sku_tier = var.cluster_sku_tier
-  tags     = var.tags
+  sku_tier                        = var.cluster_sku_tier
+  tags                            = var.tags
+  workload_identity_enabled       = true
 
   default_node_pool {
     name           = "default"
