@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Added OIDC Issuer URL output [\#5](https://github.com/AndresRCB/aks-public-cluster/pull/5) ([AndresRCB](https://github.com/AndresRCB))
 - Added Workload Identity and contributor network access to cluster [\#4](https://github.com/AndresRCB/aks-public-cluster/pull/4) ([AndresRCB](https://github.com/AndresRCB))
 
 ## [v0.1.0](https://github.com/AndresRCB/aks-public-cluster/tree/v0.1.0) (2023-01-11)
