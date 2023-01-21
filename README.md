@@ -123,5 +123,6 @@ No modules.
 | <a name="output_id"></a> [id](#output\_id)                                                                                                | ID of the created kubernetes cluster                                                  |
 | <a name="output_invoke_command"></a> [invoke\_command](#output\_invoke\_command)                                                          | Sample command to execute k8s commands on the cluster using az cli                    |
 | <a name="output_name"></a> [name](#output\_name)                                                                                          | Name of the kubernetes cluster created by this module                                 |
+| <a name="output_oidc_issuer_url"></a> [oidc\_issuer\_url](#output\_oidc\_issuer\_url)                                                     | OIDC Issuer URL for the public cluster                                                |
 | <a name="output_resource_group_name"></a> [resource\_group\_name](#output\_resource\_group\_name)                                         | Name of the resource group where the cluster was created                              |
 <!-- END_TF_DOCS -->

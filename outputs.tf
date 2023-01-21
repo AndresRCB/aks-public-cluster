@@ -23,6 +23,11 @@ output "name" {
   description = "Name of the kubernetes cluster created by this module"
 }
 
+output "oidc_issuer_url" {
+  value       = azurerm_kubernetes_cluster.main.oidc_issuer_url
+  description = "OIDC Issuer URL for the public cluster"
+}
+
 output "resource_group_name" {
   value       = azurerm_kubernetes_cluster.main.resource_group_name
   description = "Name of the resource group where the cluster was created"
