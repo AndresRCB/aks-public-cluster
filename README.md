@@ -6,8 +6,7 @@ Simple public AKS cluster with automatic authorized IP address configuration for
 
 ## Important considerations and pre-requisites
 1. This cluster enables the public preview for workload identity, which involves enabling extensions and OIDC issuer endpoints.
-2. This cluster will install the flux addon even if it's not used or configured (it's just easier for demos)
-3. **IMPORTANT** In order to use this with any Azure subscription, you need to enable workload identity preview. Follow the steps [here](https://learn.microsoft.com/en-us/azure/aks/workload-identity-deploy-cluster#register-the-enableworkloadidentitypreview-feature-flag) to do that. The TL;DR is to run the following commands:
+2. **IMPORTANT** In order to use this with any Azure subscription, you need to enable workload identity preview. Follow the steps [here](https://learn.microsoft.com/en-us/azure/aks/workload-identity-deploy-cluster#register-the-enableworkloadidentitypreview-feature-flag) to do that. The TL;DR is to run the following commands:
 ```sh
 az feature register --namespace "Microsoft.ContainerService" --name "EnableWorkloadIdentityPreview"
 # Run the following command until you see that the feature is "Registered" (will take a few minutes)
