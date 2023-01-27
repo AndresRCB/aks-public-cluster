@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Added azure key vault secrets csi driver to cluster [\#7](https://github.com/AndresRCB/aks-public-cluster/pull/7) ([AndresRCB](https://github.com/AndresRCB))
 - Added OIDC Issuer URL output [\#5](https://github.com/AndresRCB/aks-public-cluster/pull/5) ([AndresRCB](https://github.com/AndresRCB))
 - Added Workload Identity and contributor network access to cluster [\#4](https://github.com/AndresRCB/aks-public-cluster/pull/4) ([AndresRCB](https://github.com/AndresRCB))
 - Bump github.com/gruntwork-io/terratest from 0.41.7 to 0.41.9 in /test [\#3](https://github.com/AndresRCB/aks-public-cluster/pull/3) ([dependabot[bot]](https://github.com/apps/dependabot))
