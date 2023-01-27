@@ -45,6 +45,10 @@ resource "azurerm_kubernetes_cluster" "main" {
     identity_ids = [azurerm_user_assigned_identity.aks.id]
   }
 
+  key_vault_secrets_provider {
+    secret_rotation_enabled = false
+  }
+
   network_profile {
     network_plugin     = "azure"
     dns_service_ip     = var.cluster_dns_service_ip_address
