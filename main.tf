@@ -41,7 +41,7 @@ resource "azurerm_kubernetes_cluster" "main" {
 
   api_server_access_profile {
     # Allow the current client's public IP address only
-    authorized_ip_ranges = ["${chomp(data.http.myip.response_body)}/32"]
+    authorized_ip_ranges = var.authorized_ip_cidr_range == "" ? ["${chomp(data.http.myip.response_body)}/32"] : [var.authorized_ip_cidr_range]
   }
 
   identity {

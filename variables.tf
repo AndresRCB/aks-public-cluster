@@ -3,6 +3,12 @@ variable "resource_group_name" {
   description = "Name of the existing resource group to create the cluster in"
 }
 
+variable "authorized_ip_cidr_range" {
+  type        = string
+  description = "CIDR range from which the cluster nodes and control plane will be reachable"
+  default     = ""
+}
+
 variable "cluster_dns_prefix" {
   type        = string
   description = "DNS prefix for AKS cluster"

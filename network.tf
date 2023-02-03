@@ -27,7 +27,7 @@ resource "azurerm_network_security_group" "main" {
     protocol                   = "Tcp"
     destination_address_prefix = "*"
     destination_port_ranges    = ["80", "443"]
-    source_address_prefix      = "${chomp(data.http.myip.response_body)}/32"
+    source_address_prefix      = var.authorized_ip_cidr_range == "" ? "${chomp(data.http.myip.response_body)}/32" : var.authorized_ip_cidr_range
     source_port_range          = "*"
   }
 }
