@@ -3,7 +3,7 @@ data "azurerm_resource_group" "main" {
 }
 
 data "http" "myip" {
-  url = "https://ipv4.icanhazip.com"
+  url = "https://api.ipify.org"
 }
 
 resource "azurerm_user_assigned_identity" "aks" {
@@ -20,17 +20,16 @@ resource "azurerm_role_assignment" "aks_network_contributor" {
 }
 
 resource "azurerm_kubernetes_cluster" "main" {
-  location            = data.azurerm_resource_group.main.location
-  name                = var.cluster_name
-  resource_group_name = data.azurerm_resource_group.main.name
-  # Allow the current client's public IP address only
-  api_server_authorized_ip_ranges = ["${chomp(data.http.myip.response_body)}/32"]
-  dns_prefix                      = var.cluster_dns_prefix
-  oidc_issuer_enabled             = true
-  private_cluster_enabled         = false
-  sku_tier                        = var.cluster_sku_tier
-  tags                            = var.tags
-  workload_identity_enabled       = true
+  location                      = data.azurerm_resource_group.main.location
+  name                          = var.cluster_name
+  resource_group_name           = data.azurerm_resource_group.main.name
+  dns_prefix                    = var.cluster_dns_prefix
+  oidc_issuer_enabled           = true
+  private_cluster_enabled       = false
+  public_network_access_enabled = true
+  sku_tier                      = var.cluster_sku_tier
+  tags                          = var.tags
+  workload_identity_enabled     = true
 
   default_node_pool {
     name           = "default"
@@ -38,6 +37,11 @@ resource "azurerm_kubernetes_cluster" "main" {
     node_count     = 1
     tags           = var.tags
     vnet_subnet_id = azurerm_subnet.main.id
+  }
+
+  api_server_access_profile {
+    # Allow the current client's public IP address only
+    authorized_ip_ranges = ["${chomp(data.http.myip.response_body)}/32"]
   }
 
   identity {
