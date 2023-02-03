@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Changed public IP check provider and updated api\_authorized\_ranges [\#8](https://github.com/AndresRCB/aks-public-cluster/pull/8) ([AndresRCB](https://github.com/AndresRCB))
 - Added azure key vault secrets csi driver to cluster [\#7](https://github.com/AndresRCB/aks-public-cluster/pull/7) ([AndresRCB](https://github.com/AndresRCB))
 - Added OIDC Issuer URL output [\#5](https://github.com/AndresRCB/aks-public-cluster/pull/5) ([AndresRCB](https://github.com/AndresRCB))
 - Added Workload Identity and contributor network access to cluster [\#4](https://github.com/AndresRCB/aks-public-cluster/pull/4) ([AndresRCB](https://github.com/AndresRCB))
