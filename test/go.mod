@@ -3,7 +3,7 @@ module github.com/AndresRCB/aks-public-cluster
 go 1.19
 
 require (
-	github.com/Azure/terraform-module-test-helper v0.6.0
+	github.com/Azure/terraform-module-test-helper v0.8.0
 	github.com/gruntwork-io/terratest v0.41.9
 	github.com/stretchr/testify v1.8.1
 )
@@ -63,14 +63,15 @@ require (
 	github.com/modern-go/reflect2 v1.0.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/pquerna/otp v1.2.0 // indirect
-	github.com/r3labs/diff/v3 v3.0.0 // indirect
+	github.com/r3labs/diff/v3 v3.0.1 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	github.com/spf13/afero v1.9.3 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/tmccombs/hcl2json v0.3.3 // indirect
 	github.com/ulikunitz/xz v0.5.8 // indirect
 	github.com/urfave/cli v1.22.2 // indirect
-	github.com/vmihailenco/msgpack v4.0.4+incompatible // indirect
+	github.com/vmihailenco/msgpack/v5 v5.3.5 // indirect
+	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
 	github.com/zclconf/go-cty v1.12.1 // indirect
 	go.opencensus.io v0.23.0 // indirect
 	golang.org/x/crypto v0.0.0-20220517005047-85d78b3ac167 // indirect
