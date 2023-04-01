@@ -21,12 +21,6 @@ variable "cluster_dns_service_ip_address" {
   default     = "172.16.16.254"
 }
 
-variable "cluster_docker_bridge_address" {
-  type        = string
-  description = "CIDR range for the docker bridge in the cluster"
-  default     = "172.17.0.1/16"
-}
-
 variable "cluster_identity" {
   type        = string
   description = "Name of the MSI (Managed Service Identity) for the AKS cluster"

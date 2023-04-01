@@ -54,9 +54,8 @@ resource "azurerm_kubernetes_cluster" "main" {
   }
 
   network_profile {
-    network_plugin     = "azure"
-    dns_service_ip     = var.cluster_dns_service_ip_address
-    docker_bridge_cidr = var.cluster_docker_bridge_address
-    service_cidr       = var.cluster_service_ip_range
+    network_plugin = "azure"
+    dns_service_ip = var.cluster_dns_service_ip_address
+    service_cidr   = var.cluster_service_ip_range
   }
 }
