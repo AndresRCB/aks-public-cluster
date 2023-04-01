@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Bump github.com/Azure/terraform-module-test-helper from 0.9.1 to 0.12.0 in /test [\#19](https://github.com/AndresRCB/aks-public-cluster/pull/19) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump github.com/Azure/terraform-module-test-helper from 0.6.0 to 0.9.1 in /test [\#14](https://github.com/AndresRCB/aks-public-cluster/pull/14) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Added variable to allow manual setup of authorized CIDR ranges [\#9](https://github.com/AndresRCB/aks-public-cluster/pull/9) ([AndresRCB](https://github.com/AndresRCB))
 - Changed public IP check provider and updated api\_authorized\_ranges [\#8](https://github.com/AndresRCB/aks-public-cluster/pull/8) ([AndresRCB](https://github.com/AndresRCB))
