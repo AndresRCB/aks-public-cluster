@@ -41,7 +41,7 @@ variable "cluster_service_ip_range" {
 
 variable "cluster_sku_tier" {
   type        = string
-  description = "SKU tier selection between Free and Paid"
+  description = "SKU tier selection between Free and Standard"
   default     = "Free"
 }
 
