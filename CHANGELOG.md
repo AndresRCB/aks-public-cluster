@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Bump github.com/Azure/terraform-module-test-helper from 0.12.0 to 0.14.0 in /test [\#31](https://github.com/AndresRCB/aks-public-cluster/pull/31) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Remove `cluster_docker_bridge_address` \(Removed from Azure\) [\#21](https://github.com/AndresRCB/aks-public-cluster/pull/21) ([AndresRCB](https://github.com/AndresRCB))
 - Bump github.com/Azure/terraform-module-test-helper from 0.9.1 to 0.12.0 in /test [\#19](https://github.com/AndresRCB/aks-public-cluster/pull/19) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump github.com/Azure/terraform-module-test-helper from 0.6.0 to 0.9.1 in /test [\#14](https://github.com/AndresRCB/aks-public-cluster/pull/14) ([dependabot[bot]](https://github.com/apps/dependabot))
