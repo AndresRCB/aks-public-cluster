@@ -48,7 +48,7 @@ variable "cluster_sku_tier" {
 variable "default_node_pool_vm_size" {
   type        = string
   description = "Size of nodes in the k8s cluster's default node pool"
-  default     = "Standard_D2s_v3"
+  default     = "Standard_D2a_v4"
 }
 
 variable "subnet_cidr" {
